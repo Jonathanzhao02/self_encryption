@@ -2,6 +2,68 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.0.0 (2023-05-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* correct max chunk size to 500kiB
+* reducing the max chunk size from 1MB to 500kB
+* Public API changes as SecretKey is renamed to DataMap.
+* **docs:** Complete change of API.
+* **deps:** underlying deps were updated
+* **self_encryptor.rs:** As this makes the previous data unusable, this is a breaking change.
+* **test/lib.rs:** Last commit changed the argument types of the SE API
+* **self_encryptor.rs:** Remove truncate api from self encryptor
+* **tokio:** new Tokio runtime version is not backward compatible with tokio versions < 1.
+* **self_encryptor.rs:** Previous commit (c6aafe6) introduced a breaking change due to introduction of new delete trait.
+
+### Features
+
+* reducing the max chunk size from 1MB to 500kB ([7577322](https://github.com/Jonathanzhao02/self_encryption/commit/7577322d9288ce516a9e56dec3aa0977be45e1ac))
+* **audit:** add scheduled security audit scan ([28508f1](https://github.com/Jonathanzhao02/self_encryption/commit/28508f190ab3bc48ad4ecbb9941f23ceae378e43))
+* **ci:** add cargo publish to CI ([80c614f](https://github.com/Jonathanzhao02/self_encryption/commit/80c614ff72bfe733e815c40d125f536fdd770667))
+* **errors:** add specific for too few bytes ([4b572e9](https://github.com/Jonathanzhao02/self_encryption/commit/4b572e9857529d76707d6e304d62d9a048850d42))
+* **get:** self mut for get api ([1dfeca3](https://github.com/Jonathanzhao02/self_encryption/commit/1dfeca3715604612aea982fa9c795413e4b443f5))
+* **read:** perform reading from storage in parallel for faster reads ([e760063](https://github.com/Jonathanzhao02/self_encryption/commit/e76006387a24c88bb3acaacdc2484dcd1c6068f2))
+* **reading:** implement faster reading ([26799d9](https://github.com/Jonathanzhao02/self_encryption/commit/26799d93658cbd3b11478aea1ad482ecdb8f25bf))
+* **self_encryptor.rs:** Remove truncate api from self encryptor ([77b2f57](https://github.com/Jonathanzhao02/self_encryption/commit/77b2f57331624396cf21c484f477c5101d4ea207))
+* **self_encryptor.rs:** Store chunks on write ([bed44c4](https://github.com/Jonathanzhao02/self_encryption/commit/bed44c446bfb364e48c9a17a70d6fb5399723685))
+* delete for Self-Encryptor ([7480376](https://github.com/Jonathanzhao02/self_encryption/commit/74803764955e3fc46771012ab81f2fee3ea59668))
+* **storage:** delete trait for SEStorage ([056c4b7](https://github.com/Jonathanzhao02/self_encryption/commit/056c4b7d4cd63dc3d32a7de46338099de817915a))
+
+
+### Bug Fixes
+
+* correct max chunk size to 500kiB ([15f41a0](https://github.com/Jonathanzhao02/self_encryption/commit/15f41a06c1845c9a5afc29d04c3b153b6dfdc889))
+* minor clippy fix ([479adba](https://github.com/Jonathanzhao02/self_encryption/commit/479adbaf350d6a473c0c2558c54fe4afdf4d2989))
+* **benches:** update for min size change ([940f6fe](https://github.com/Jonathanzhao02/self_encryption/commit/940f6fefb461fa98bd76b125eedb921bc80f749f))
+* **range:** allow to pass ranges with length overflowing data length ([919ed53](https://github.com/Jonathanzhao02/self_encryption/commit/919ed53a4146da30b58ad9483cd98df85d3a4343))
+* **seek:** avoid range out of bounds panic ([fcd56b9](https://github.com/Jonathanzhao02/self_encryption/commit/fcd56b9e33df2efa1632ef74030301b1a30bdc2f))
+* **seek:** use correct offset ([34f327d](https://github.com/Jonathanzhao02/self_encryption/commit/34f327df86fce937613ecf33b864517689cf3573))
+* enforce min size, sort keys in new ([e7f4ec0](https://github.com/Jonathanzhao02/self_encryption/commit/e7f4ec0eef1343c234e7b69143048250523504d2))
+* **Cargo.toml:** Remove rustc-serialize dependency ([a9baf6b](https://github.com/Jonathanzhao02/self_encryption/commit/a9baf6bb9bab44ce67530610dc6f9a5eacd27831))
+* **clippy:** fix clippy errors ([7dc38d1](https://github.com/Jonathanzhao02/self_encryption/commit/7dc38d180c1b715730d6100cf67d13072c5ef1c2))
+* **self_encryptor.rs:** Fix edge case of writing ([f212e88](https://github.com/Jonathanzhao02/self_encryption/commit/f212e8828cdfd3c519a811bf4c6a9af5e3ccd037))
+* **self_encryptor.rs:** Fix edge cases in truncate logic ([de3ea50](https://github.com/Jonathanzhao02/self_encryption/commit/de3ea50d5f8131c557c0bfe4ec3cd92c11989b5a))
+* **self_encryptor.rs:** Requested Changes from the review ([993b524](https://github.com/Jonathanzhao02/self_encryption/commit/993b524e0d8c01d537ef9960e5e711b612653e7d))
+* **self_encryptor.rs:** Set IV to second half of last chunk hash ([61852dc](https://github.com/Jonathanzhao02/self_encryption/commit/61852dcb73240fd6ce91dd412c269740166f607c))
+* **tests/lib.rs:** Make different data size for 32 and 64 bit binaries ([c6e5ca1](https://github.com/Jonathanzhao02/self_encryption/commit/c6e5ca121f577b824539cb7cc8e6e84f1ea5e7ed))
+* **writes:** process network writes in parallel ([4974a95](https://github.com/Jonathanzhao02/self_encryption/commit/4974a95d7117e796aafcc973124c3033b4c5fb04))
+* mark Boxed Future as Send ([232166d](https://github.com/Jonathanzhao02/self_encryption/commit/232166d7ab422dbd4bd88ff442d5a722aba4904a))
+
+
+### update
+
+* **deps:** update deps flagged by security audit ([df8f2ac](https://github.com/Jonathanzhao02/self_encryption/commit/df8f2ac3cd048706d5237f10f1d08d97d4f6ea59))
+
+
+* rename secretkey to datamap ([75f4131](https://github.com/Jonathanzhao02/self_encryption/commit/75f41311c2b3c562826f3646792774d4fbc9a728))
+* **docs:** add explainer for IV and Pad. ([2d56d1a](https://github.com/Jonathanzhao02/self_encryption/commit/2d56d1a9a7999b562e59934a1e825a4a05e0dfa4))
+* **self_encryptor.rs:** Use Err inplace of panic! and expect ([a4cae07](https://github.com/Jonathanzhao02/self_encryption/commit/a4cae07a1ff530c987513e5bba937c31e5c64d55))
+* **test/lib.rs:** Add more crossplatform tests ([136be7f](https://github.com/Jonathanzhao02/self_encryption/commit/136be7fd58b7a23c4522244938492c44c7b27b25))
+* **tokio:** upgrading to v1.3.0 ([640593b](https://github.com/Jonathanzhao02/self_encryption/commit/640593b1fbbe3d8f67c2ae730584ddbf6060703c))
+
 ## [0.28.0](https://github.com/maidsafe/self_encryption/compare/v0.27.5...v0.28.0) (2023-03-15)
 
 
